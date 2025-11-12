@@ -128,27 +128,24 @@ aa <- ggplot(deg_summary, aes(x = Comparison, y = Pval005, fill = Comparison)) +
   theme_bw()
 aa
 
-# ---- SAVE DEG TABLES ----
-library(openxlsx)
 
-# Create a new workbook
-wb <- createWorkbook()
+# Add comparison labels to each result
+res1$Comparison <- "TREM_KO_ME7_vs_TREM_NBH"
+res2$Comparison <- "TREM_KO_ME7_vs_WT_ME7"
+res3$Comparison <- "TREM_NBH_vs_WT_NBH"
+res4$Comparison <- "WT_ME7_vs_WT_NBH"
 
-# Add each DEG result as a separate sheet
-addWorksheet(wb, "TREM_KO_ME7 vs TREM_NBH")
-writeData(wb, sheet = 1, x = res1, rowNames = TRUE)
+# Combine all DEG results into one big data frame
+deg_all <- rbind(
+  res1,
+  res2,
+  res3,
+  res4
+)
 
-addWorksheet(wb, "TREM_KO_ME7 vs WT_ME7")
-writeData(wb, sheet = 2, x = res2, rowNames = TRUE)
+# ---- SAVE ALL DEG TABLES INTO ONE SINGLE CSV ----
+write.table(deg_all, "output.csv", sep = ",", col.names = NA)
 
-addWorksheet(wb, "TREM_NBH vs WT_NBH")
-writeData(wb, sheet = 3, x = res3, rowNames = TRUE)
-
-addWorksheet(wb, "WT_ME7 vs WT_NBH")
-writeData(wb, sheet = 4, x = res4, rowNames = TRUE)
-
-# Save to file
-saveWorkbook(wb, file = "output.xlsx", overwrite = TRUE)
 
 # ---- SAVE Plot TABLES ----
 ggsave("output.png", plot = aa, width = 8, height = 8)
