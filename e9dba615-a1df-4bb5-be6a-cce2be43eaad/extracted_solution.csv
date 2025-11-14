@@ -1,0 +1,5 @@
+"","","Comparison","Pval005","FDR005"
+"1",1,"Trem2KO_prion_vs_Trem2KO_nbh",203,0
+"2",2,"Trem2KO_prion_vs_WT_prion",170,2
+"3",3,"Trem2KO_nbh_vs_WT_nbh",79,1
+"4",4,"WT_prion_vs_WT_nbh",263,27

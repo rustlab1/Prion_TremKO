@@ -1,0 +1,29 @@
+{
+  "id": "e9dba615-a1df-4bb5-be6a-cce2be43eaad",
+  "paper": "https://doi.org/10.3389/fnins.2025.1525017",
+  "figure_reference": "Figure 6B",
+  "row": "Each row represents one comparison showing the number of differentially expressed genes (DEGs) used to recreate the bar chart.",
+  "columns": [
+    {
+      "name": "Comparison",
+      "type": "str",
+      "description": "the specific biological comparison, for example Trem2KO prion versus Trem2KO NBH"
+    },
+    {
+      "name": "Pval005",
+      "type": "int",
+      "description": "count of genes with p value < 0.005"
+    },
+    {
+      "name": "FDR005",
+      "type": "int",
+      "description": "count of genes with adjusted p value < 0.05"
+    }
+  ],
+  "row_order_columns": ["Comparison"],
+  "notes": [
+    "The figure was digitized manually and numerical values were extracted to reproduce Figure 6B.",
+    "The four comparisons are Trem2KO prion vs Trem2KO NBH, Trem2KO prion vs WT prion, Trem2KO NBH vs WT NBH, and WT prion vs WT NBH.",
+    "Values reflect number of significant genes at each threshold and are not raw sequencing counts."
+  ]
+}
