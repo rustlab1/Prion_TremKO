@@ -1,7 +1,9 @@
+if (!require(ggplot2, quietly = TRUE)) install.packages("ggplot2")
+
 library(ggplot2)
 
-# Load the summary table (replace with your file)
-deg_summary <- read.csv("input_data/data.csv", check.names = FALSE)
+# Read the extracted solution CSV (must be in same folder)
+deg_summary <- read.csv("extracted_solution.csv")
 
 # Ensure correct order
 deg_summary$Comparison <- factor(deg_summary$Comparison, levels = deg_summary$Comparison)
@@ -29,4 +31,5 @@ p <- ggplot(deg_summary, aes(x = Comparison, y = Pval005, fill = Comparison)) +
 p
 
 # Save
-ggsave("output_plot.png", plot = p, width = 8, height = 8)
+ggsave("extracted_solution.jpg", plot = p, width = 8, height = 8)
+write.csv(deg_summary, "extracted_solution.csv")
